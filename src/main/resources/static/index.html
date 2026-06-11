@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Home — Argue With Stranger</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="nav-brand">⚔️ Argue With Stranger</div>
+    <div class="nav-right">
+        <span class="nav-username" id="nav-username"></span>
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="profile.html" class="nav-link">Profile</a>
+        <button class="btn btn-outline btn-sm" id="logout-btn">Logout</button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+    <h2>Pick a side. Make your case.</h2>
+    <p>Join a live debate or watch and vote for the better argument.</p>
+</div>
+
+<!-- Search + Filter -->
+<div class="container">
+    <div class="toolbar">
+        <input
+                type="text"
+                id="search-input"
+                class="search-input"
+                placeholder="Search debate topics..."/>
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-status="ALL">All</button>
+            <button class="filter-tab" data-status="OPEN">Open</button>
+            <button class="filter-tab" data-status="ONGOING">Live</button>
+            <button class="filter-tab" data-status="CLOSED">Ended</button>
+        </div>
+    </div>
+
+    <!-- Debate Cards Grid -->
+    <div id="debates-grid" class="debates-grid">
+        <div class="loading-spinner">Loading debates...</div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" id="pagination"></div>
+</div>
+
+<!-- Debate Card Template -->
+<template id="debate-card-template">
+    <div class="debate-card">
+        <div class="card-status-badge"></div>
+        <h3 class="card-topic"></h3>
+        <p class="card-description"></p>
+        <div class="card-participants">
+            <div class="participant favor">
+                <span class="participant-label">FAVOR</span>
+                <span class="participant-name"></span>
+            </div>
+            <div class="participant-vs">VS</div>
+            <div class="participant against">
+                <span class="participant-label">AGAINST</span>
+                <span class="participant-name"></span>
+            </div>
+        </div>
+        <div class="card-actions">
+            <button class="btn btn-favor join-favor-btn">Join Favor</button>
+            <button class="btn btn-against join-against-btn">Join Against</button>
+            <button class="btn btn-watch watch-btn">Watch</button>
+        </div>
+    </div>
+</template>
+
+<script src="js/api.js"></script>
+<script src="js/debates.js"></script>
+</body>
+</html>

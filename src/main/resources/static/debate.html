@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Debate Room — Argue With Stranger</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="debate-page">
+
+<!-- Debate Header -->
+<div class="debate-header">
+    <div class="debate-header-left">
+        <a href="index.html" class="back-link">← Back</a>
+        <h2 id="debate-topic" class="debate-title">Loading...</h2>
+    </div>
+    <div class="debate-header-right">
+        <span id="debate-status-badge" class="status-badge"></span>
+        <button id="end-debate-btn" class="btn btn-danger btn-sm hidden">
+            End Debate
+        </button>
+    </div>
+</div>
+
+<!-- Main Layout -->
+<div class="debate-layout">
+
+    <!-- Left: Favor Debater -->
+    <div class="debater-panel favor-panel">
+        <div class="debater-label">FAVOR</div>
+        <div id="favor-name" class="debater-name">—</div>
+        <div id="favor-vote-count" class="vote-count">0 votes</div>
+        <button
+                id="vote-favor-btn"
+                class="btn btn-favor vote-btn hidden">
+            Vote Favor
+        </button>
+    </div>
+
+    <!-- Center: Chat -->
+    <div class="chat-panel">
+        <div id="chat-messages" class="chat-messages">
+            <div class="chat-placeholder">
+                Chat will appear here once the debate starts.
+            </div>
+        </div>
+
+        <!-- Spectator notice -->
+        <div id="spectator-notice" class="spectator-notice hidden">
+            👁 You are watching as a spectator
+        </div>
+
+        <!-- Message Input (debaters only) -->
+        <div id="message-input-area" class="message-input-area hidden">
+        <textarea
+                id="message-input"
+                class="message-textarea"
+                placeholder="Make your argument..."
+                rows="3"
+                maxlength="2000"></textarea>
+            <div class="input-footer">
+                <span id="char-count" class="char-count">0 / 2000</span>
+                <button id="send-btn" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right: Against Debater -->
+    <div class="debater-panel against-panel">
+        <div class="debater-label">AGAINST</div>
+        <div id="against-name" class="debater-name">—</div>
+        <div id="against-vote-count" class="vote-count">0 votes</div>
+        <button
+                id="vote-against-btn"
+                class="btn btn-against vote-btn hidden">
+            Vote Against
+        </button>
+    </div>
+
+</div>
+
+<!-- Result Banner (shown when CLOSED) -->
+<div id="result-banner" class="result-banner hidden">
+    <h3>Debate Ended</h3>
+    <div id="result-content"></div>
+</div>
+
+<script src="js/sockjs.min.js"></script>
+<script src="js/stomp.umd.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/debateRoom.js"></script>
+</body>
+</html>

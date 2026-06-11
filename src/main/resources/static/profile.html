@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Profile — Argue With Stranger</title>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-brand">⚔️ Argue With Stranger</div>
+    <div class="nav-right">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="profile.html" class="nav-link active">Profile</a>
+        <button class="btn btn-outline btn-sm" id="logout-btn">Logout</button>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- Profile Card -->
+    <div class="profile-card">
+        <div class="profile-avatar" id="profile-avatar">?</div>
+        <div class="profile-info">
+            <h2 id="profile-username">Loading...</h2>
+            <p id="profile-email" class="profile-email"></p>
+            <span id="profile-role" class="role-badge"></span>
+        </div>
+        <div class="profile-stats">
+            <div class="stat">
+                <span class="stat-value" id="stat-debates">0</span>
+                <span class="stat-label">Debates</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="stat-messages">0</span>
+                <span class="stat-label">Messages</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="stat-since">—</span>
+                <span class="stat-label">Member since</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="profile-tabs">
+        <button class="profile-tab active" data-tab="my-debates">
+            My Debates
+        </button>
+        <button class="profile-tab" data-tab="leaderboard">
+            Leaderboard
+        </button>
+    </div>
+
+    <!-- My Debates -->
+    <div id="my-debates-tab" class="tab-content">
+        <div id="my-debates-list" class="debates-list">
+            <div class="loading-spinner">Loading...</div>
+        </div>
+    </div>
+
+    <!-- Leaderboard -->
+    <div id="leaderboard-tab" class="tab-content hidden">
+        <div class="leaderboard-table-wrapper">
+            <table class="leaderboard-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Debates</th>
+                    <th>Messages</th>
+                </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                <tr><td colspan="4">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>
