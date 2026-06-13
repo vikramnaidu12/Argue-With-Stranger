@@ -121,6 +121,8 @@ if (registerForm) {
                   Object.entries(err.data.validationErrors).forEach(([field, msg]) => {
                       setFieldError(field, msg);
                   });
+              } else if (err.status === 409) {
+                  showError("Email or username already registered. Please login instead.");
               } else {
                   showError("Registration failed. Please try again.");
               }
