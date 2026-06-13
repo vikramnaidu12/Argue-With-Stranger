@@ -72,15 +72,16 @@ if (loginForm) {
       saveAuth(data);
       window.location.href = '/index.html';
     } catch (err) {
-      showError(err.message || 'Login failed. Please try again.');
 
-      // Show field-level errors from server validation
-      if (err.data?.validationErrors) {
-        Object.entries(err.data.validationErrors).forEach(([field, msg]) => {
-          setFieldError(field, msg);
-        });
-      }
-    } finally {
+          if (err.data?.validationErrors) {
+              Object.entries(err.data.validationErrors).forEach(([field, msg]) => {
+                  setFieldError(field, msg);
+              });
+          } else {
+              showError("Invalid username or password.");
+          }
+
+      } finally {
       setLoading('login-btn', false);
     }
   });
@@ -110,19 +111,22 @@ if (registerForm) {
 
     setLoading('register-btn', true);
 
-    try {
-      const data = await AuthAPI.register({ username, email, password });
-      saveAuth(data);
-      window.location.href = '/index.html';
-    } catch (err) {
-      showError(err.message || 'Registration failed. Please try again.');
-      if (err.data?.validationErrors) {
-        Object.entries(err.data.validationErrors).forEach(([field, msg]) => {
-          setFieldError(field, msg);
-        });
-      }
-    } finally {
-      setLoading('register-btn', false);
+        try {
+            const data = await AuthAPI.register({ username, email, password });
+            saveAuth(data);
+            window.location.href = '/index.html';
+        } catch (err) {
+
+              if (err.data?.validationErrors) {
+                  Object.entries(err.data.validationErrors).forEach(([field, msg]) => {
+                      setFieldError(field, msg);
+                  });
+              } else {
+                  showError("Registration failed. Please try again.");
+              }
+
+          } finally {
+            setLoading('register-btn', false);
+        }
+    });
     }
-  });
-}

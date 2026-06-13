@@ -322,3 +322,91 @@ function escapeHtml(text) {
 // ── Start ──────────────────────────────────────────────────────
 
 init();
+
+// ===============================
+// 🤖 Demo AI Debate Analysis
+// ===============================
+
+document.getElementById("generate-ai-btn")
+?.addEventListener("click", () => {
+
+    document.getElementById("ai-analysis-box")
+        .classList.remove("hidden");
+
+    document.getElementById("logic-score").textContent =
+        (80 + Math.floor(Math.random()*20)) + "%";
+
+    document.getElementById("evidence-score").textContent =
+        (75 + Math.floor(Math.random()*25)) + "%";
+
+    document.getElementById("persuasion-score").textContent =
+        (78 + Math.floor(Math.random()*22)) + "%";
+
+    document.getElementById("ai-summary").innerHTML = `
+    The AI analyzed both sides of the debate.
+    <br><br>
+
+    ✅ Strong logical reasoning was observed.
+
+    <br><br>
+
+    📚 Both participants supported their arguments effectively.
+
+    <br><br>
+
+    🎯 The debate remained balanced and persuasive.
+
+    <br><br>
+
+    🤖 Final Verdict:
+    This discussion demonstrated critical thinking and constructive argumentation.
+    `;
+});
+
+document.getElementById("generate-ai-btn")
+?.addEventListener("click", generateAIAnalysis);
+
+async function generateAIAnalysis(){
+
+    try{
+
+       const response = await fetch(
+           `http://localhost:8080/api/ai/analyze/${debateId}`,
+           {
+               method: "POST",
+               headers: {
+                   "Authorization": `Bearer ${getToken()}`
+               }
+           }
+       );
+
+        const data = await response.json();
+
+        console.log(data);
+        alert(JSON.stringify(data));
+
+        document.getElementById("logic-score").innerText =
+            data.logic;
+
+        document.getElementById("evidence-score").innerText =
+            data.evidence;
+
+        document.getElementById("persuasion-score").innerText =
+            data.persuasion;
+
+        document.getElementById("ai-summary").innerHTML = `
+        <h3>🏆 Winner: ${data.winner}</h3>
+        <br>
+        ${data.summary}
+        `;
+
+    }
+    catch(e){
+
+        alert("Failed to generate AI analysis");
+
+        console.log(e);
+
+    }
+
+}

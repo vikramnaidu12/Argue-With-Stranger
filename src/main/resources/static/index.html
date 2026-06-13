@@ -19,12 +19,43 @@
     </div>
 </nav>
 
+<section class="stats-section">
+
+    <div class="stat-card">
+        <h2 id="total-debates">0</h2>
+        <p>Total Debates</p>
+    </div>
+
+    <div class="stat-card">
+        <h2 id="live-debates">0</h2>
+        <p>Live Debates</p>
+    </div>
+
+    <div class="stat-card">
+        <h2 id="total-users">0</h2>
+        <p>Community</p>
+    </div>
+
+    <div class="stat-card">
+        <h2 id="ai-ready">AI</h2>
+        <p>Powered</p>
+    </div>
+
+</section>
+
 <!-- Hero -->
 <div class="hero">
-    <h2>Pick a side. Make your case.</h2>
-    <p>Join a live debate or watch and vote for the better argument.</p>
-</div>
 
+    <h1>⚔️ Argue With Stranger AI</h1>
+
+    <h2>Challenge Humans. Sharpen Your Thinking.</h2>
+
+    <p>
+        Join live debates, defend your ideas, compete with others,
+        and soon get evaluated by AI.
+    </p>
+
+</div>
 <!-- Search + Filter -->
 <div class="container">
     <div class="toolbar">
@@ -53,7 +84,16 @@
 <!-- Debate Card Template -->
 <template id="debate-card-template">
     <div class="debate-card">
-        <div class="card-status-badge"></div>
+        <div class="card-top">
+
+            <div class="card-status-badge"></div>
+
+            <span class="ai-badge">
+        🤖 AI Ready
+    </span>
+
+        </div>
+        <span class="card-category">Technology</span>
         <h3 class="card-topic"></h3>
         <p class="card-description"></p>
         <div class="card-participants">

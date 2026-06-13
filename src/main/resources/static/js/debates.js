@@ -46,6 +46,15 @@ async function loadDebates(page = 0) {
     renderDebates(data.content);
     renderPagination(data.totalPages, data.number);
 
+    document.getElementById("total-debates").textContent =
+        data.totalElements;
+
+    document.getElementById("live-debates").textContent =
+        data.content.filter(d => d.status === "ONGOING").length;
+
+    document.getElementById("total-users").textContent =
+        "1000+";
+
   } catch (err) {
     grid.innerHTML =
       `<div class="loading-spinner">Failed to load debates: ${err.message}</div>`;
@@ -71,10 +80,23 @@ function renderDebates(debates) {
 
     // Status badge
     const badge = card.querySelector('.card-status-badge');
-    badge.textContent = debate.status;
+if (debate.status === "ONGOING") {
+    badge.textContent = "🟢 LIVE";
+}
+else if (debate.status === "OPEN") {
+    badge.textContent = "🟡 OPEN";
+}
+else {
+    badge.textContent = "🔴 ENDED";
+}
     badge.classList.add(`badge-${debate.status}`);
 
     // Topic and description
+    const category =
+        card.querySelector(".card-category");
+
+    category.textContent =
+        debate.category || "General";
     card.querySelector('.card-topic').textContent = debate.topic;
     card.querySelector('.card-description').textContent =
       debate.description || 'No description provided.';
