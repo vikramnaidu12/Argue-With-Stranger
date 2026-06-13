@@ -200,5 +200,5 @@ App runs at → `http://localhost:8080`
 ---
 
 <div align="center">
-  Built with ☕ Java, 🤖 Gemini AI, and the will to argue about everything.
+  Built by Vikram Naidu
 </div>
