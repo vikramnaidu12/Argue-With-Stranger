@@ -127,7 +127,7 @@ function connectWebSocket() {
 
   console.log("Connecting WebSocket...");
 
-  const socket = new SockJS('http://localhost:8080/chat');
+  const socket = new SockJS(window.location.origin + '/chat');
 
   stompClient = StompJs.Stomp.over(() => socket);
 
@@ -371,7 +371,7 @@ async function generateAIAnalysis(){
     try{
 
        const response = await fetch(
-           `http://localhost:8080/api/ai/analyze/${debateId}`,
+                                  `${window.location.origin}/api/ai/analyze/${debateId}`,
            {
                method: "POST",
                headers: {

@@ -6,7 +6,7 @@
  * Handles 401 responses by redirecting to login.
  */
 
-const API_BASE = 'http://localhost:8080';
+const API_BASE = window.location.origin;
 
 // ── Auth helpers ───────────────────────────────────────────────
 
